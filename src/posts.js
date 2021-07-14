@@ -17,12 +17,16 @@ import {
 export const PostList = props => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid>
-            <TextField source="id" />
-            <ReferenceField source="userId" reference="users">
+            <ReferenceField source="Заказчик" reference="users">
                 <TextField source="name" />
             </ReferenceField>
-            <TextField source="title" />
-            <TextField source="body" />
+            <TextField source="Бюджет" />
+            <TextField source="Ссылка на сайт" />
+            <TextField source="Отрасль" />
+            <TextField source="Nda" />
+            <TextField source="Сроки" />
+            <TextField source="Статус проекта" />
+            <TextField source="Направление" />
             <EditButton />
         </Datagrid>
     </List>
