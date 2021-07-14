@@ -8,7 +8,7 @@ import {ProjectInfo} from "./projectInfo";
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import NotFound from './NotFound';
-import {NewsCreate, NewsList} from "./News";
+import {NewsCreate, NewsEdit, NewsList} from "./News";
 
 import jsonServerProvider from 'ra-data-json-server';
 import PostIcon from '@material-ui/icons/Book';
@@ -27,7 +27,7 @@ const App = () => (
         <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
         <Resource name="users" list={UserList} icon={UserIcon} />
         <Resource name="briefs" list={BriefList} icon={BriefIcon} />
-        <Resource name="news" list={NewsList} create={NewsCreate} icon={NewsIcon} />
+        <Resource name="news" list={NewsList} edit={NewsEdit} create={NewsCreate} icon={NewsIcon} />
     </Admin>
 );
 
