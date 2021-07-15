@@ -12,6 +12,7 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    AutocompleteInput,
 } from 'react-admin';
 
 export const PostList = props => (
@@ -45,17 +46,29 @@ export const PostEdit = props => (
     </Edit>
 );
 
-export const PostCreate = props => (
-    <Create {...props}>
-        <SimpleForm>
-            <ReferenceInput source="userId" reference="users">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-            <TextInput source="title" />
-            <TextInput multiline source="body" />
-        </SimpleForm>
-    </Create>
-);
+export const PostCreate = (props) => {
+    const categories = [
+        { name: 'Tech', id: 'tech' },
+        { name: 'Lifestyle', id: 'lifestyle' },
+    ];
+    return (
+        <Create {...props}>
+            <SimpleForm>
+                <TextInput source="title" />
+                <AutocompleteInput
+                    onCreate={() => {
+                        const newCategoryName = prompt('Enter a new category');
+                        const newCategory = { id: newCategoryName.toLowerCase(), name: newCategoryName };
+                        categories.push(newCategory);
+                        return newCategory;
+                    }}
+                    source="category"
+                    choices={categories}
+                />
+            </SimpleForm>
+        </Create>
+    );
+}
 
 const PostTitle = ({ record }) => {
     return <span>Post {record ? `"${record.title}"` : ''}</span>;
