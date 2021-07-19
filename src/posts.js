@@ -13,15 +13,25 @@ import {
     SelectInput,
     TextInput,
     AutocompleteInput,
+    Show,
+    TabbedShowLayout,
+    DateField,
+    RichTextField,
+    SimpleShowLayout,
+    Tab,
+    NumberField,
+    BooleanField,
+    ReferenceManyField
 } from 'react-admin';
 
 export const PostList = props => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid>
-            <ReferenceField source="Заказчик" reference="users">
+            <TextField source="id" />
+            <ReferenceField source="userId" reference="users">
                 <TextField source="name" />
             </ReferenceField>
-            <TextField source="Бюджет" />
+            <TextField source="title" />
             <TextField source="Ссылка на сайт" />
             <TextField source="Отрасль" />
             <TextField source="Nda" />
@@ -34,14 +44,14 @@ export const PostList = props => (
 );
 
 export const PostEdit = props => (
-    <Edit title={<PostTitle />} {...props}>
+    <Edit {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
             <ReferenceInput source="userId" reference="users">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="id" />
             </ReferenceInput>
+            <TextInput source="id" />
             <TextInput source="title" />
-            <TextInput multiline source="body" />
+            <TextInput source="body" />
         </SimpleForm>
     </Edit>
 );
@@ -81,4 +91,15 @@ const PostFilter = (props) => (
             <SelectInput optionText="name" />
         </ReferenceInput>
     </Filter>
+);
+
+export const PostShow = (props) => (
+    <Show {...props}>
+        <SimpleShowLayout>
+            <TextField source="title" />
+            <TextField source="teaser" />
+            <RichTextField source="body" />
+            <DateField label="Publication date" source="created_at" />
+        </SimpleShowLayout>
+    </Show>
 );
