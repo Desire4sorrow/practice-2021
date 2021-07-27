@@ -31,9 +31,10 @@ import {
     SimpleFormIterator,
     NumberInput,
     DateInput,
-    SimpleList
+    SimpleList,
+    SearchInput,
 } from 'react-admin';
-import UrlFieldCustom from './UrlFieldCustom'
+import UrlFieldCustom from './UrlFieldCustom';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -58,15 +59,18 @@ const ndaFields = [
 ];
 
 
+const ProjectFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput source="id" resettable alwaysOn />
+    </Filter>
+)
 export const ProjectList = props => (
-    <List {...props}>
+    <List filters={<ProjectFilter/>} {...props} >
         <Datagrid>
             <TextField source="project_name" label="Название проекта"/>
             <TextField source="client" label="Клиент" />
             <NumberField source="budget" lable="Бюджет"/>
             <SelectField source="nda" choices={ndaFields} label="NDA"/>
-            <DateField source="terms_from" label="Срок От"/>
-            <DateField source="terms_to" label="Срок До"/>
             <UrlFieldCustom source="link_to_project_folder" label="Ссылка" />
             <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>
             <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта"/>
@@ -194,7 +198,7 @@ export const ProjectCreate = (props) => {
                 </ArrayInput>
                 <ArrayInput source="clock_estimation" label="Часы разработки проекта">
                     <SimpleFormIterator>
-                        <DateInput source="clock" label="Количество часов" resettable/>
+                        <NumberInput source="clock" label="Количество часов" resettable/>
                         <TextInput source="direction" label="Направление" resettable/>
                     </SimpleFormIterator>
                 </ArrayInput>
@@ -202,17 +206,6 @@ export const ProjectCreate = (props) => {
         </Create>
     );
 }
-
-
-
-const ProjectFilter = (props) => (
-    <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="Id" source="projectName" reference="projects" allowEmpty>
-            <SelectInput optionText="name" />
-        </ReferenceInput>
-    </Filter>
-); 
 
 export const ProjectShow = props => (
     <Show label='Текущий проект' {...props}>

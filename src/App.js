@@ -3,11 +3,10 @@ import { Admin, Resource } from 'react-admin';
 
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
-import {ProjectInfo} from "./projectInfo";
 import Dashboard from './Dashboard';
 import authProvider from './authProvider';
 import NotFound from './NotFound';
-import {NewsCreate, NewsEdit, NewsList} from "./News";
+import {NewsList} from "./telegram";
 
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -25,7 +24,7 @@ const App = () => (
 
         <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} show={ProjectShow} icon={PostIcon} />
         <Resource name="briefs" list={BriefList} icon={BriefIcon} />
-        <Resource name="news" list={NewsList} edit={NewsEdit} create={NewsCreate} icon={NewsIcon} />
+        <Resource name="telegrams" list={NewsList} icon={NewsIcon} />
     </Admin>
 );
 
