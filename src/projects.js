@@ -93,7 +93,7 @@ export const ProjectEdit = props => (
             <TextInput source="problems_and_solvings" label="Проблемы и их решения"/>
             <ArrayInput source="technologies" label="Технологии">
                 <SimpleFormIterator>
-                    <TextInput source="technology" label="Технология" />
+                    <TextInput source="" label="Технология" />
                 </SimpleFormIterator>
             </ArrayInput>
             <ArrayInput source="links_to_store_site" label="Ссылка на стор-сайт">
@@ -122,7 +122,7 @@ export const ProjectEdit = props => (
             <DateInput source="terms_to" label="Дата окончания проекта"/>
             <ArrayInput source="directions_of_work" label="Направление работы">
                 <SimpleFormIterator>
-                    <TextInput source="work_direction" label="Направление"/>
+                    <TextInput source="work_direction" />
                 </SimpleFormIterator>
             </ArrayInput>
             <ArrayInput source="nominations" label="Номинации">
@@ -157,7 +157,7 @@ export const ProjectCreate = (props) => {
                 <TextInput source="problems_and_solvings" label="Проблемы и их решения" resettable/>
                 <ArrayInput source="technologies" label="Технологии" >
                     <SimpleFormIterator>
-                        <TextInput source="technology" label="Технология" resettable/>
+                        <TextInput source="" label="Технология" resettable/>
                     </SimpleFormIterator>
                 </ArrayInput>
                 <ArrayInput source="links_to_store_site" label="Ссылка на стор-сайт">
@@ -186,7 +186,7 @@ export const ProjectCreate = (props) => {
                 <DateInput source="terms_to" label="Дата окончания проекта"/>
                 <ArrayInput source="directions_of_work" label="Направление работы">
                     <SimpleFormIterator>
-                        <TextInput source="work_direction" label="Направление" resettable/>
+                        <TextInput source="work_direction" resettable/>
                     </SimpleFormIterator>
                 </ArrayInput>
                 <ArrayInput source="nominations" label="Номинации">
@@ -210,29 +210,29 @@ export const ProjectCreate = (props) => {
 export const ProjectShow = props => (
     <Show label='Текущий проект' {...props}>
         <SimpleShowLayout>
-            <TextField source="project_name" title="Название"/>
-            <SelectField source="otrasl" choices={otraslFields} title="Отрасль"/>
-            <SelectField source="state_of_project" choices={stateOfProjectFields} title="Статус" />
-            <TextField source="client" title="Клиент" />
-            <SelectField source="nda" choices={ndaFields} title="NDA"/>
-            <NumberField source="budget" title="Бюджет"/>
-            <TextField source="description" title="Описание"/>
-            <TextField source="problems_and_solvings" title="Проблемы/сложности"/>
-            <ArrayField source="technologies" title="Технологии">
+            <TextField source="project_name" label="Название"/>
+            <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>
+            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус" />
+            <TextField source="client" label="Клиент" />
+            <SelectField source="nda" choices={ndaFields} label="NDA"/>
+            <NumberField source="budget" label="Бюджет"/>
+            <TextField source="description" label="Описание"/>
+            <TextField source="problems_and_solvings" label="Проблемы/сложности"/>
+            <ArrayField source="technologies" label="Технологии">
                 <SingleFieldList>
-                    <TextField source="technology"/>
+                    <TextField source=""/>
                 </SingleFieldList>
             </ArrayField>
             <ArrayField source="links_to_store_site" title="Cсылка на стор">
                 <SingleFieldList>
-                    <UrlField source="link"/>
+                    <UrlField source="link" />
                 </SingleFieldList>
             </ArrayField>
             <UrlField source="link_to_project_folder" title="Ссылка на проект" />
             <UrlField source="link_to_presentation" title="Cсылка на презентацию"/>
-            <ArrayField source="links_to_case_behance_or_our_site" title="Ссылка на бэхансе/наш сайт">
+            <ArrayField source="links_to_case_behance_or_our_site" label="Ссылка на бехансе">
                 <SingleFieldList>
-                    <UrlField source="link_case"/>
+                    <UrlFieldCustom source="link_case"/>
                 </SingleFieldList>
             </ArrayField>
             <ArrayField source="teams" title="Команды">
@@ -261,8 +261,8 @@ export const ProjectShow = props => (
             </ArrayField>
             <ArrayField source="clock_estimation" title="Часы по оценке">
                 <Datagrid>
-                    <DateField source="clock" title="Время"/>
-                    <TextField source="direction" title="Направление работы"/>
+                    <NumberField source="clock" label="Время"/>
+                    <TextField source="direction" label="Направление работы"/>
                 </Datagrid>
             </ArrayField>
         </SimpleShowLayout>
