@@ -6,7 +6,7 @@ import {BriefList} from "./briefs";
 import Dashboard from './Dashboard';
 import { authProvider, httpClient } from './authProvider';
 import NotFound from './NotFound';
-import {NewsList, NewsEdit, NewsCreate, NewsShow} from "./telegram";
+import {NewsList, NewsCreate} from "./telegram";
 
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -23,8 +23,8 @@ const App = () => (
            dataProvider={dataProvider}>
 
         <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} show={ProjectShow} icon={PostIcon} />
-        <Resource name="briefs" list={BriefList} icon={BriefIcon} />
-        <Resource name="telegrams" list={NewsList} edit={NewsEdit} create={NewsCreate} show={NewsShow} icon={NewsIcon} />
+        <Resource name="briefs"  list={BriefList} icon={BriefIcon} />
+        <Resource name="telegrams" list={NewsList} create={NewsCreate}  icon={NewsIcon} />
     </Admin>
 );
 

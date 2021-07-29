@@ -27,7 +27,7 @@ export default function MediaCard() {
                     className={classes.media}
                     image="https://www.inry.com/hubfs/INRY/IMG/insights/content/4046/servicenow-ppm-use-cases.png"
                 />
-                <CardContent>
+                <CardContent style={{ textAlign: 'center' }}>
                     <Typography gutterBottom variant="h5" component="h2">
                         Добро пожаловать в базу проектов!
                     </Typography>
@@ -36,7 +36,7 @@ export default function MediaCard() {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions style={{ textAlign: 'center' }}>
                 <Button fullWidth size="large" color="primary">
                     <a href="https://marmelab.com/react-admin/"></a>
                     Learn more about React-admin

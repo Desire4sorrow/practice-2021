@@ -81,7 +81,7 @@ export const ProjectList = props => (
 );
 
 export const ProjectEdit = props => (
-    <Edit title='Текущий проект' {...props}>
+    <Edit title={<ProjectTitle/>} {...props}>
         <SimpleForm>
             <TextInput source="project_name" label="Название проекта" />
             <SelectInput source="otrasl" choices={otraslFields} label="Отрасль"/>
@@ -208,7 +208,7 @@ export const ProjectCreate = (props) => {
 }
 
 export const ProjectShow = props => (
-    <Show label='Текущий проект' {...props}>
+    <Show title={<ProjectTitle/>}{...props}>
         <SimpleShowLayout>
             <TextField source="project_name" label="Название"/>
             <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>
@@ -268,3 +268,7 @@ export const ProjectShow = props => (
         </SimpleShowLayout>
     </Show>
 );
+
+const ProjectTitle = ({ record }) => {
+        return <span>Project {record ? `'${record.project_name}'` : ''}</span>;
+    };
