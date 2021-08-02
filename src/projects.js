@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Fragment } from 'react';
 import {
     List,
     Datagrid,
@@ -33,8 +34,12 @@ import {
     DateInput,
     SimpleList,
     SearchInput,
+    BulkDeleteButton,
+    BooleanInput,
 } from 'react-admin';
 import UrlFieldCustom from './UrlFieldCustom';
+import ResetViewsButton from './ResetViewsButton';
+import Button from '@material-ui/core/Button';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -58,18 +63,26 @@ const ndaFields = [
     { name: 'Запрещено', id: '0' },
 ];
 
+const PostBulkActionButtons = props => (
+    <Fragment>
+        <ResetViewsButton label="Reset Views" {...props} />
+        {/* default bulk delete action */}
+        <BulkDeleteButton {...props} />
+    </Fragment>
+);
 
-const ProjectFilter = (props) => (
-    <Filter {...props}>
-        <SearchInput source="id" resettable alwaysOn />
-    </Filter>
-)
+const ProjectFilter = [
+        <TextInput label="Search" source="id" resettable alwaysOn />,
+        <BooleanInput source="nda" label="NDA" />,
+        <TextInput source="budget" />
+        ];
+
 export const ProjectList = props => (
-    <List filters={<ProjectFilter/>} {...props} >
+    <List filters={ProjectFilter} {...props} bulkActionButtons={<PostBulkActionButtons />}>
         <Datagrid>
             <TextField source="project_name" label="Название проекта"/>
             <TextField source="client" label="Клиент" />
-            <NumberField source="budget" lable="Бюджет"/>
+            <NumberField source="budget" label="Бюджет"/>
             <SelectField source="nda" choices={ndaFields} label="NDA"/>
             <UrlFieldCustom source="link_to_project_folder" label="Ссылка" />
             <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>

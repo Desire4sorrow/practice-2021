@@ -6,10 +6,9 @@ import {     List,
     SimpleForm,
     TextInput,
     useListContext,
-Show,
-ShowButton} from 'react-admin';
+    ShowButton} from 'react-admin';
 import { Card, CardActions, CardContent, CardHeader, Avatar } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Person';
+import EventIcon from '@material-ui/icons/Event';
 
 export const NewsList = props => (
     <List {...props}>
@@ -32,7 +31,7 @@ const NewsGrid = () => {
                 <Card key={id} style={cardStyle}>
                     <CardHeader
                         title={<TextField record={data[id]} source="title" />}
-                        avatar={<Avatar icon={<PersonIcon />} />}
+                        avatar={<Avatar icon={<EventIcon />} />}
                     />
                     <CardContent>
                         <TextField record={data[id]} source="description" />
