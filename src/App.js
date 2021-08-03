@@ -4,8 +4,8 @@ import { Admin, Resource } from 'react-admin';
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
 import Dashboard from './Dashboard';
-import authProvider from './authProvider';
-import NotFound from './NotFound';
+import authProvider from './embeddedModules/authProvider';
+import NotFound from './embeddedModules/NotFound';
 import {NewsList, NewsCreate} from "./telegram";
 
 import jsonServerProvider from 'ra-data-json-server';

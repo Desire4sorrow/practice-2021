@@ -37,8 +37,8 @@ import {
     BulkDeleteButton,
     BooleanInput,
 } from 'react-admin';
-import UrlFieldCustom from './UrlFieldCustom';
-import ResetViewsButton from './ResetViewsButton';
+import UrlFieldCustom from './embeddedModules/UrlFieldCustom';
+import ResetViewsButton from './embeddedModules/ResetViewsButton';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
