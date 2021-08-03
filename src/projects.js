@@ -39,7 +39,6 @@ import {
 } from 'react-admin';
 import UrlFieldCustom from './UrlFieldCustom';
 import ResetViewsButton from './ResetViewsButton';
-import Button from '@material-ui/core/Button';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -71,8 +70,9 @@ const PostBulkActionButtons = props => (
     </Fragment>
 );
 
+
 const ProjectFilter = [
-        <TextInput label="Search" source="id" resettable alwaysOn />,
+        <SearchInput source="id" resettable alwaysOn />,
         <BooleanInput source="nda" label="NDA" />,
         <TextInput source="budget" />
         ];
@@ -80,13 +80,13 @@ const ProjectFilter = [
 export const ProjectList = props => (
     <List filters={ProjectFilter} {...props} bulkActionButtons={<PostBulkActionButtons />}>
         <Datagrid>
-            <TextField source="project_name" label="Название проекта"/>
-            <TextField source="client" label="Клиент" />
-            <NumberField source="budget" label="Бюджет"/>
-            <SelectField source="nda" choices={ndaFields} label="NDA"/>
-            <UrlFieldCustom source="link_to_project_folder" label="Ссылка" />
-            <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>
-            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта"/>
+            <TextField source="project_name" label="Название проекта" sortable={false}/>
+            <TextField source="client" label="Клиент" sortable={false} />
+            <NumberField source="budget" label="Бюджет" sortable={false}/>
+            <SelectField source="nda" choices={ndaFields} label="NDA" sortable={false}/>
+            <UrlFieldCustom source="link_to_project_folder" label="Ссылка" sortable={false}/>
+            <SelectField source="otrasl" choices={otraslFields} label="Отрасль" sortable={false}/>
+            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта" sortable={false}/>
             <ShowButton />
             <EditButton />
         </Datagrid>

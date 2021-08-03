@@ -6,19 +6,22 @@ import {     List,
     SimpleForm,
     TextInput,
     useListContext,
-    ShowButton} from 'react-admin';
+    ShowButton,
+    Button,
+} from 'react-admin';
 import { Card, CardActions, CardContent, CardHeader, Avatar } from '@material-ui/core';
 import EventIcon from '@material-ui/icons/Event';
 
+
 export const NewsList = props => (
     <List {...props}>
-        <NewsGrid/>
+        <NewsGrid />
     </List>
 );
 
 const cardStyle = {
-    width: 300,
-    minHeight: 300,
+    width: 390,
+    minHeight: 200,
     margin: '0.5em',
     display: 'inline-block',
     verticalAlign: 'top'
@@ -31,14 +34,12 @@ const NewsGrid = () => {
                 <Card key={id} style={cardStyle}>
                     <CardHeader
                         title={<TextField record={data[id]} source="title" />}
-                        avatar={<Avatar icon={<EventIcon />} />}
+                        avatar={<EventIcon />}
                     />
-                    <CardContent>
-                        <TextField record={data[id]} source="description" />
-                    </CardContent>
-                    <CardActions style={{ textAlign: 'center', marginTop: '7em'}}>
+                    <CardActions style={{position: 'relative', textAlign: 'center', marginTop: '5em'}}>
                         <EditButton resource="telegram" basePath={basePath} record={data[id]} />
                         <ShowButton resource="telegram" basePath={basePath} record={data[id]} />
+                        <Button style={{ marginLeft: '11em'}} label="Send"/>
                     </CardActions>
                 </Card>
             )}
