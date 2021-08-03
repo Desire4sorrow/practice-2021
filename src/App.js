@@ -4,7 +4,7 @@ import { Admin, Resource } from 'react-admin';
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
 import Dashboard from './Dashboard';
-import { authProvider, httpClient } from './authProvider';
+import authProvider from './authProvider';
 import NotFound from './NotFound';
 import {NewsList, NewsCreate} from "./telegram";
 
