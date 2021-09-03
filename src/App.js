@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Admin, Resource } from 'react-admin';
+import { fetchUtils, Admin, Resource } from 'react-admin';
 
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
@@ -14,7 +14,16 @@ import PostIcon from '@material-ui/icons/Book';
 import BriefIcon from '@material-ui/icons/ChromeReaderMode';
 import NewsIcon from '@material-ui/icons/Announcement';
 
-const dataProvider = jsonServerProvider('http://127.0.0.1:3001');
+const httpClient = (url, options = {}) => {
+    if (!options.headers) {
+        options.headers = new Headers({ Accept: 'application/json' });
+    }
+    const { token } = JSON.parse(localStorage.getItem('auth'));
+    options.headers.set('Authorization', `Bearer ${token}`);
+    return fetchUtils.fetchJson(url, options);
+};
+
+const dataProvider = jsonServerProvider('http://127.0.0.1:3001', httpClient);
 
 const App = () => (
     <Admin catchAll={NotFound}

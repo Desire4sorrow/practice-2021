@@ -39,13 +39,13 @@ export const BriefList = props => (
         <label>Кто его целевая аудитория?</label>
         <TextInput source="Развернутый ответ" resettable/>
         <label>Есть ли какая-либо документация (ТЗ, спецификации, макеты экранов, интерактивный прототип)?</label>
-            <RadioButtonGroupInput source="Documentation" choices={[
+            <RadioButtonGroupInput source="Documentation" label="" choices={[
                     { id: 'yesDoc', name: 'Да' },
                     { id: 'noDoc', name: 'Нет' },
                     { id: 'otherDoc', name: 'Другое' }
             ]} row={false} />
         <label>Укажите платформы, которые должны поддерживаться</label>
-        <CheckboxGroupInput source="Platforms" choices={[
+        <CheckboxGroupInput source="Platforms" label="" choices={[
             { id: 'IOS', name: 'IOS(Iphone или Ipad)' },
             { id: 'Iphone', name: 'Iphone only' },
             { id: 'Ipad', name: 'Ipad only' },
@@ -59,7 +59,7 @@ export const BriefList = props => (
             <label> Если есть, то могли бы Вы предоставить файлы для ознакомления? (пожалуйста, укажите ссылку на файлы)</label>
                     <TextInput source="Развернутый ответ" resettable/>
         <label>Укажите версии OS</label>
-        <CheckboxGroupInput source="OsVersion" choices={[
+        <CheckboxGroupInput source="OsVersion" label="" choices={[
             { id: 'IOS8+', name: 'IOS 8+' },
             { id: 'Android4+', name: 'Android 4+' },
         ]} row={false}/>
@@ -70,13 +70,13 @@ export const BriefList = props => (
             <label>Какие конкурентные примущества будут у вашего проекта? </label>
             <TextInput source="Развернутый ответ" resettable/>
             <label>Будет ли предоставляться дизайн, или его необходимо создать с нуля? </label>
-        <CheckboxGroupInput source="Design" choices={[
+        <CheckboxGroupInput source="Design" label="" choices={[
             { id: 'NoDesign', name: 'Нет, нам нужно создать дизайн с нуля' },
             { id: 'IconsDesign', name: 'У нас есть иконки приложения' },
             { id: 'FinDesign', name: 'У нас есть окончательный дизайн, и наш дизайнер уже подготовил все ресурсы для разработки в соответствии с вашими стандартами'}
         ]} row={false}/>
             <label>Будет ли приложение включать фоновую музыку и звуки?</label>
-        <CheckboxGroupInput source="Music" choices={[
+        <CheckboxGroupInput source="Music" label="" choices={[
             { id: 'MusicYes', name: 'Да' },
             { id: 'MusicNo', name: 'Нет' },
             { id: 'MusicYesExist', name: 'Да, и Клиент предоставит аудио файлы' },
@@ -86,30 +86,30 @@ export const BriefList = props => (
             <label>Будет ли приложение многоязычным? Какие языки оно должно поддерживать? </label>
             <TextInput source="Развернутый ответ" resettable/>
             <label>Какую модель монетизации будет использовать приложение?</label>
-        <CheckboxGroupInput source="Monetization" choices={[
+        <CheckboxGroupInput source="Monetization" label="" choices={[
             { id: 'MonetizationPaid', name: 'Платное' },
             { id: 'MonetizationFree', name: 'Бесплатное' },
             { id: 'MonetizationFreePaid', name: 'Будет включать в себя покупки в приложении' },
             { id: 'MonetizationNotStated', name: 'Еще не знаю'},
         ]} row={false}/>
             <label>Будет ли серверная часть, панель администратора? </label>
-                <RadioButtonGroupInput source="Backend part" choices={[
+                <RadioButtonGroupInput source="Backend part" label="" choices={[
             { id: 'BackendPartYes', name: 'Да' },
             { id: 'BackendPartNo', name: 'Нет' },
                 ]} row={false}/>
             <label>Если да, то будет ли предоставляться бэкэнд, API?</label>
-            <RadioButtonGroupInput source="Backend" choices={[
+            <RadioButtonGroupInput source="Backend" label="" choices={[
                 { id: 'yesApi', name: 'Да' },
                 { id: 'noApi', name: 'Нет' },
             ]} row={false}/>
             <label>Пожалуйста, укажите режим экрана, который будет поддерживаться в приложении.</label>
-            <RadioButtonGroupInput source="Screen" choices={[
+            <RadioButtonGroupInput source="Screen" label="" choices={[
                     { id: 'port', name: 'Портретный' },
                     { id: 'land', name: 'Пейзажный' },
                     { id: 'portland', name: 'Портретный и Пейзажный'}
             ]} row={false}/>
             <label>Нужна ли вам помощь при публикации в AppStore / Google Play?</label>
-            <RadioButtonGroupInput source="Publication" choices={[
+            <RadioButtonGroupInput source="Publication" label="" choices={[
                     { id: 'yesPub', name: 'Да' },
                     { id: 'noPub', name: 'Нет' },
             ]} row={false}/>
@@ -118,7 +118,7 @@ export const BriefList = props => (
             <label>Предполагаемая дата релиза </label>
             <TextInput source="Краткий ответ" resettable/>
             <label>Выделенный бюджет </label>
-            <RadioButtonGroupInput source="Budjet" choices={[
+            <RadioButtonGroupInput source="Budjet" label="" choices={[
                     { id: 'before1', name: 'До 1 млн рублей' },
                     { id: '1-3', name: '1 млн рублей - 3 млн рублей' },
                     { id: '3-6', name: '3 млн рублей - 6 млн рублей'},
