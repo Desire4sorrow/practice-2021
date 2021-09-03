@@ -4,26 +4,17 @@ import {
     List,
     Datagrid,
     TextField,
-    ReferenceField,
     EditButton,
     Edit,
     Create,
     SimpleForm,
-    Filter,
-    ReferenceInput,
     SelectInput,
     TextInput,
-    AutocompleteInput,
     Show,
     ShowButton,
-    TabbedShowLayout,
     DateField,
-    RichTextField,
     SimpleShowLayout,
-    Tab,
     NumberField,
-    BooleanField,
-    ReferenceManyField,
     UrlField,
     SelectField,
     ArrayField,
@@ -32,13 +23,14 @@ import {
     SimpleFormIterator,
     NumberInput,
     DateInput,
-    SimpleList,
     SearchInput,
     BulkDeleteButton,
     BooleanInput,
+    Filter
 } from 'react-admin';
 import UrlFieldCustom from './embeddedModules/UrlFieldCustom';
 import ResetViewsButton from './embeddedModules/ResetViewsButton';
+import Typography from "@material-ui/core/Typography";
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -62,6 +54,7 @@ const ndaFields = [
     { name: 'Запрещено', id: '0' },
 ];
 
+
 const PostBulkActionButtons = props => (
     <Fragment>
         <ResetViewsButton label="Reset Views" {...props} />
@@ -70,16 +63,33 @@ const PostBulkActionButtons = props => (
     </Fragment>
 );
 
+const Aside = () => (
+    <div style={{ width: 100, margin: '1em' }}>
+        <Typography variant="h6">Подробнее:</Typography>
+        <Typography variant="body2">
+            •Название •Клиент •Бюджет <td>•NDA</td> •Ссылка
+            •Отрасль •Статус •Описание •Проблемы и решения
+            •Технологии •Ссылка на стор-сайт •Ссылка на папку проекта
+            •Ссылка на презентацию •Ссылка на кейс в бехансе •Команды
+            •Направление •Дата начала •Дата окончания •Номинации •Часы разработки
+        </Typography>
+    </div>
+);
 
-const ProjectFilter = [
-        <SearchInput source="id" resettable alwaysOn />,
-        <BooleanInput source="nda" label="NDA" />,
-        <TextInput source="budget" />
-        ];
+const postRowStyle = (record, index) => ({
+    backgroundColor: record.nb_views >= 500 ? '#efe' : 'lavender',
+});
+
+
+const ProjectFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput placeholder='Search' source='client' resettable alwaysOn />
+    </Filter>
+);
 
 export const ProjectList = props => (
-    <List filters={ProjectFilter} {...props} bulkActionButtons={<PostBulkActionButtons />}>
-        <Datagrid>
+    <List aside={<Aside />}  {...props} filters={<ProjectFilter/>} bulkActionButtons={<PostBulkActionButtons />}>
+        <Datagrid rowStyle={postRowStyle} >
             <TextField source="project_name" label="Название проекта" sortable={false}/>
             <TextField source="client" label="Клиент" sortable={false} />
             <NumberField source="budget" label="Бюджет" sortable={false}/>
@@ -98,7 +108,7 @@ export const ProjectEdit = props => (
         <SimpleForm>
             <TextInput source="project_name" label="Название проекта" />
             <SelectInput source="otrasl" choices={otraslFields} label="Отрасль"/>
-            <SelectInput source="state_of_project" choices={stateOfProjectFields} label="Состояние проекта"/>
+            <SelectInput source="state_of_project" choices={stateOfProjectFields} label="Статус проекта"/>
             <TextInput source="client" label="Клиент"/>
             <SelectInput source="nda" choices={ndaFields} />
             <NumberInput source="budget" label="Бюджет"/>

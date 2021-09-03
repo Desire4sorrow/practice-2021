@@ -9,22 +9,32 @@ import {     List,
     ShowButton,
     Button,
 } from 'react-admin';
-import { Card, CardActions, CardContent, CardHeader, Avatar } from '@material-ui/core';
+import { Card, CardActions, CardHeader } from '@material-ui/core';
 import EventIcon from '@material-ui/icons/Event';
+import {makeStyles} from "@material-ui/core/styles";
 
+const useStyles = makeStyles({
+    actions: {
+        backgroundColor: '#ccc',
+    },
+});
 
-export const NewsList = props => (
-    <List {...props}>
-        <NewsGrid />
-    </List>
-);
+export const NewsList = props => {
+    useStyles(props);
+    return (
+        <List {...props}>
+            <NewsGrid/>
+        </List>
+    );
+}
 
 const cardStyle = {
     width: 380,
     minHeight: 200,
     margin: '0.5em',
     display: 'inline-block',
-    verticalAlign: 'top'
+    verticalAlign: 'top',
+    backgroundColor: 'lavender'
 };
 const NewsGrid = () => {
     const { ids, data, basePath } = useListContext();

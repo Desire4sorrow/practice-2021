@@ -1,8 +1,6 @@
 import * as React from "react";
 import {
     SimpleForm,
-    ReferenceInput,
-    SelectInput,
     TextInput,
     CheckboxGroupInput,
     RadioButtonGroupInput,

@@ -8,6 +8,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "date-fns": "^2.23.0",
+    "jsonexport": "^3.2.0",
     "ra-data-simple-rest": "^3.16.0",
     "ra-language-russian": "^3.13.5",
     "react": "^17.0.2",
@@ -39,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.12.3"
   }
 }

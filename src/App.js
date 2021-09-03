@@ -1,5 +1,5 @@
 import * as React from "react";
-import { fetchUtils, Admin, Resource } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
