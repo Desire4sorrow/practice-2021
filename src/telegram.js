@@ -20,7 +20,7 @@ export const NewsList = props => (
 );
 
 const cardStyle = {
-    width: 390,
+    width: 380,
     minHeight: 200,
     margin: '0.5em',
     display: 'inline-block',

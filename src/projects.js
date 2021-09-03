@@ -199,7 +199,7 @@ export const ProjectCreate = (props) => {
                 <DateInput source="terms_to" label="Дата окончания проекта"/>
                 <ArrayInput source="directions_of_work" label="Направление работы">
                     <SimpleFormIterator>
-                        <TextInput source="work_direction" resettable/>
+                        <TextInput source="work_direction" label="Направление" resettable/>
                     </SimpleFormIterator>
                 </ArrayInput>
                 <ArrayInput source="nominations" label="Номинации">
@@ -236,43 +236,43 @@ export const ProjectShow = props => (
                     <TextField source=""/>
                 </SingleFieldList>
             </ArrayField>
-            <ArrayField source="links_to_store_site" title="Cсылка на стор">
+            <ArrayField source="links_to_store_site" label="Cсылка на стор">
                 <SingleFieldList>
                     <UrlField source="link" />
                 </SingleFieldList>
             </ArrayField>
-            <UrlField source="link_to_project_folder" title="Ссылка на проект" />
-            <UrlField source="link_to_presentation" title="Cсылка на презентацию"/>
+            <UrlField source="link_to_project_folder" label="Ссылка на проект" />
+            <UrlField source="link_to_presentation" label="Cсылка на презентацию"/>
             <ArrayField source="links_to_case_behance_or_our_site" label="Ссылка на бехансе">
                 <SingleFieldList>
                     <UrlFieldCustom source="link_case"/>
                 </SingleFieldList>
             </ArrayField>
-            <ArrayField source="teams" title="Команды">
+            <ArrayField source="teams" label="Команды">
                 <Datagrid>
-                    <TextField source="team_work_direction" title="Направление"/>
-                    <ArrayField source="team" title="Команда">
+                    <TextField source="team_work_direction" label="Направление"/>
+                    <ArrayField source="team" label="Команда">
                         <SingleFieldList>
                             <TextField source="workers"/>
                         </SingleFieldList>
                     </ArrayField>
                 </Datagrid>
             </ArrayField>
-            <DateField source="terms_from" title="Срок От"/>
-            <DateField source="terms_to" title="Срок До"/>
-            <ArrayField source="directions_of_work" title="Направление работы">
+            <DateField source="terms_from" label="Срок От"/>
+            <DateField source="terms_to" label="Срок До"/>
+            <ArrayField source="directions_of_work" label="Направление работы">
                 <SingleFieldList>
                     <TextField source="work_direction"/>
                 </SingleFieldList>
             </ArrayField>
-            <ArrayField source="nominations" title="Номинации">
+            <ArrayField source="nominations" label="Номинации">
                 <Datagrid>
-                    <TextField source="title" title="Название"/>
-                    <TextField source="description" title="Описание"/>
-                    <TextField source="link" title="Ссылка"/>
+                    <TextField source="title" label="Название"/>
+                    <TextField source="description" label="Описание"/>
+                    <TextField source="link" label="Ссылка"/>
                 </Datagrid>
             </ArrayField>
-            <ArrayField source="clock_estimation" title="Часы по оценке">
+            <ArrayField source="clock_estimation" label="Часы по оценке">
                 <Datagrid>
                     <NumberField source="clock" label="Время"/>
                     <TextField source="direction" label="Направление работы"/>
