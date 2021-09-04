@@ -4,9 +4,9 @@ import { Admin, Resource } from 'react-admin';
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
 import Dashboard from './Dashboard';
-import {authProvider} from './embeddedModules/authProvider';
+import {authProvider, httpClient} from './embeddedModules/authProvider';
 import NotFound from './embeddedModules/NotFound';
-import {NewsList, NewsCreate} from "./telegram";
+import {NewsList, NewsCreate, NewsEdit, NewsShow} from "./telegram";
 
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -20,11 +20,11 @@ const App = () => (
     <Admin catchAll={NotFound}
            dashboard={Dashboard}
            authProvider={authProvider}
-           dataProvider={jsonServerProvider('http://127.0.0.1:3001')}>
+           dataProvider={jsonServerProvider('http://127.0.0.1:3001', httpClient)}>
 
         <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} show={ProjectShow} icon={PostIcon} />
         <Resource name="briefs" list={BriefList} icon={BriefIcon} />
-        <Resource name="telegrams" list={NewsList} create={NewsCreate}  icon={NewsIcon}/>
+        <Resource name="telegrams" list={NewsList} create={NewsCreate} edit={NewsEdit} show={NewsShow} icon={NewsIcon}/>
     </Admin>
 );
 

@@ -8,11 +8,13 @@ import {     List,
     useListContext,
     ShowButton,
     Button,
+    Edit,
+    Show,
+    SimpleShowLayout
 } from 'react-admin';
 import { Card, CardActions, CardHeader } from '@material-ui/core';
 import ChromeReaderModeRoundedIcon from '@material-ui/icons/ChromeReaderModeRounded';
 import {makeStyles} from "@material-ui/core/styles";
-import {Send} from "@material-ui/icons";
 
 const useStyles = makeStyles({
     actions: {
@@ -52,8 +54,8 @@ const NewsGrid = () => {
                         avatar={<ChromeReaderModeRoundedIcon fontSize="large"/>}
                     />
                     <CardActions style={{position: 'relative', textAlign: 'center', marginTop: '5em'}}>
-                        <EditButton resource="telegram" basePath={basePath} record={data[id]} />
-                        <ShowButton resource="telegram" basePath={basePath} record={data[id]} />
+                        <ShowButton resource="telegrams" basePath={basePath} record={data[id]} />
+                        <EditButton resource="telegrams" basePath={basePath} record={data[id]} />
                         <Button onClick={SendToBot} style={{ marginLeft: '11em'}} label="Send"/>
                     </CardActions>
                 </Card>
@@ -62,15 +64,14 @@ const NewsGrid = () => {
     );
 };
 
-/*export const NewsEdit = props => (
+export const NewsEdit = props => (
     <Edit title='Текущий проект' {...props}>
         <SimpleForm>
-            <TextInput source="id" label="Номер" />
             <TextInput source="title" label="Заголовок" />
             <TextInput source="description" label="Описание" />
         </SimpleForm>
     </Edit>
-); */
+);
 
 export const NewsCreate = (props) => {
 
@@ -84,12 +85,11 @@ export const NewsCreate = (props) => {
     );
 }
 
-/*export const NewsShow = props => (
+export const NewsShow = props => (
     <Show label='Текущий проект' {...props}>
         <SimpleShowLayout>
-            <TextField source="id" label="Номер"/>
             <TextField source="title" label="Заголовок"/>
             <TextField source="description" label="Описание"/>
         </SimpleShowLayout>
     </Show>
-);*/
+);
