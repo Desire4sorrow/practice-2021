@@ -4,7 +4,7 @@ import { Admin, Resource } from 'react-admin';
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
 import Dashboard from './Dashboard';
-import {authProvider, httpClient} from './embeddedModules/authProvider';
+import {authProvider} from './embeddedModules/authProvider';
 import NotFound from './embeddedModules/NotFound';
 import {NewsList, NewsCreate} from "./telegram";
 
@@ -15,15 +15,16 @@ import BriefIcon from '@material-ui/icons/ChromeReaderMode';
 import NewsIcon from '@material-ui/icons/Announcement';
 
 
+
 const App = () => (
     <Admin catchAll={NotFound}
            dashboard={Dashboard}
            authProvider={authProvider}
-           dataProvider={jsonServerProvider('http://127.0.0.1:3001', httpClient)}>
+           dataProvider={jsonServerProvider('http://127.0.0.1:3001')}>
 
         <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} show={ProjectShow} icon={PostIcon} />
-        <Resource name="briefs"  list={BriefList} icon={BriefIcon} />
-        <Resource name="telegrams" list={NewsList} create={NewsCreate}  icon={NewsIcon} />
+        <Resource name="briefs" list={BriefList} icon={BriefIcon} />
+        <Resource name="telegrams" list={NewsList} create={NewsCreate}  icon={NewsIcon}/>
     </Admin>
 );
 

@@ -10,8 +10,9 @@ import {     List,
     Button,
 } from 'react-admin';
 import { Card, CardActions, CardHeader } from '@material-ui/core';
-import EventIcon from '@material-ui/icons/Event';
+import ChromeReaderModeRoundedIcon from '@material-ui/icons/ChromeReaderModeRounded';
 import {makeStyles} from "@material-ui/core/styles";
+import {Send} from "@material-ui/icons";
 
 const useStyles = makeStyles({
     actions: {
@@ -28,13 +29,17 @@ export const NewsList = props => {
     );
 }
 
+function SendToBot()
+{
+    alert('Sending this new to Telegram');
+}
 const cardStyle = {
     width: 380,
     minHeight: 200,
     margin: '0.5em',
     display: 'inline-block',
     verticalAlign: 'top',
-    backgroundColor: 'lavender'
+    backgroundColor: 'lightblue',
 };
 const NewsGrid = () => {
     const { ids, data, basePath } = useListContext();
@@ -44,12 +49,12 @@ const NewsGrid = () => {
                 <Card key={id} style={cardStyle}>
                     <CardHeader
                         title={<TextField record={data[id]} source="title" />}
-                        avatar={<EventIcon />}
+                        avatar={<ChromeReaderModeRoundedIcon fontSize="large"/>}
                     />
                     <CardActions style={{position: 'relative', textAlign: 'center', marginTop: '5em'}}>
                         <EditButton resource="telegram" basePath={basePath} record={data[id]} />
                         <ShowButton resource="telegram" basePath={basePath} record={data[id]} />
-                        <Button style={{ marginLeft: '11em'}} label="Send"/>
+                        <Button onClick={SendToBot} style={{ marginLeft: '11em'}} label="Send"/>
                     </CardActions>
                 </Card>
             )}

@@ -77,7 +77,7 @@ const Aside = () => (
 );
 
 const postRowStyle = (record, index) => ({
-    backgroundColor: record.nb_views >= 500 ? '#efe' : 'lavender',
+    backgroundColor: record.nb_views >= 500 ? '#efe' : 'lightblue',
 });
 
 
