@@ -7,10 +7,11 @@ export const authProvider = {
     // authentication
     login: ({ username, password }) => {
         const request = new Request(
-            process.env.REACT_APP_API_URL + '/users/login',
+            //process.env.REACT_APP_API_URL + '/login',
+            "http://127.0.0.1:3001/auth/login",
             {
                 method: 'POST',
-                body: JSON.stringify({ email: username, password }),
+                body: JSON.stringify({ login: username, password: password }),
                 headers: new Headers({ 'Content-Type': 'application/json' }),
             }
         );
@@ -19,6 +20,7 @@ export const authProvider = {
                 if (response.status < 200 || response.status >= 300) {
                     throw new Error(response.statusText);
                 }
+                console.log(response);
                 return response.json();
             })
             .then((auth) => {
