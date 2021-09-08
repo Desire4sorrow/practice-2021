@@ -9,17 +9,17 @@ export default {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
-            sort: JSON.stringify(field),
-            order: JSON.stringify(order),
+            sortq: field,
+            order: order,
             page: JSON.stringify(page),
             perPage: JSON.stringify(perPage),
-            filter: JSON.stringify('params.filter'),
+            filter: "",
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
-            total: parseInt(headers.get('content-range').split('/').pop(), 10),
+            total: parseInt(headers.get('X-Total-Count').split('/').pop(), 10),
         }));
     },
 
