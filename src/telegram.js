@@ -41,7 +41,7 @@ const cardStyle = {
     margin: '0.5em',
     display: 'inline-block',
     verticalAlign: 'top',
-    backgroundColor: 'lightblue',
+    backgroundColor: '#F0F8FF',
 };
 const NewsGrid = () => {
     const { ids, data, basePath } = useListContext();

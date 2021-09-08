@@ -25,12 +25,13 @@ import {
     DateInput,
     SearchInput,
     BulkDeleteButton,
-    BooleanInput,
+    Pagination,
     Filter
 } from 'react-admin';
 import UrlFieldCustom from './embeddedModules/UrlFieldCustom';
 import ResetViewsButton from './embeddedModules/ResetViewsButton';
 import Typography from "@material-ui/core/Typography";
+import { makeStyles, Chip } from '@material-ui/core';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -77,26 +78,42 @@ const Aside = () => (
 );
 
 const postRowStyle = (record, index) => ({
-    backgroundColor: record.nb_views >= 500 ? '#efe' : 'lightblue',
+    backgroundColor: record.nb_views >= 500 ? '#efe' : '#F0F8FF',
+    textDecorationColor: '#000000',
 });
 
+const useQuickFilterStyles = makeStyles(theme => ({
+    chip: {
+        marginBottom: theme.spacing(1),
+    },
+}));
+
+const QuickFilter = ({ label }) => {
+
+    const classes = useQuickFilterStyles();
+    return <Chip className={classes.chip} label={(label)} />;
+};
+
+const ProjectPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 const ProjectFilter = (props) => (
     <Filter {...props}>
-        <SearchInput placeholder='Search' source='client' resettable alwaysOn />
+        <SearchInput placeholder='Search' source='project_name' source='client' resettable alwaysOn />
+        <TextInput source='client' label='Клиент'/>
+        <QuickFilter source='nda' label='NDA' defaultValue={true}/>
     </Filter>
 );
 
 export const ProjectList = props => (
-    <List aside={<Aside />}  {...props} filters={<ProjectFilter/>} bulkActionButtons={<PostBulkActionButtons />}>
+    <List aside={<Aside />}  {...props} filters={<ProjectFilter/>} pagination={<ProjectPagination />} bulkActionButtons={<PostBulkActionButtons />}>
         <Datagrid rowStyle={postRowStyle} >
             <TextField source="project_name" label="Название проекта"/>
-            <TextField source="client" label="Клиент" sortable={false} />
-            <NumberField source="budget" label="Бюджет" sortable={false}/>
-            <SelectField source="nda" choices={ndaFields} label="NDA" sortable={false}/>
-            <UrlFieldCustom source="link_to_project_folder" label="Ссылка" sortable={false}/>
-            <SelectField source="otrasl" choices={otraslFields} label="Отрасль" sortable={false}/>
-            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта" sortable={false}/>
+            <TextField source="client" label="Клиент"  />
+            <NumberField source="budget" label="Бюджет" />
+            <SelectField source="nda" choices={ndaFields} label="NDA" />
+            <UrlFieldCustom source="link_to_project_folder" label="Ссылка" />
+            <SelectField source="otrasl" choices={otraslFields} label="Отрасль" />
+            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта" />
             <ShowButton />
             <EditButton />
         </Datagrid>

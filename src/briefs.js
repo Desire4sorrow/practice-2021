@@ -6,8 +6,12 @@ import {
     RadioButtonGroupInput,
 } from 'react-admin';
 
+const postRowStyle = (record, index) => ({
+    backgroundColor: record.nb_views >= 500 ? '#efe' : '#F0F8FF',
+});
+
 export const BriefList = props => (
-    <SimpleForm>
+    <SimpleForm rowStyle={postRowStyle}>
         <label>Электронная почта</label>
         <TextInput source="Адрес электронной почты" resettable />
         <label>Как называется Ваша компания?</label>
