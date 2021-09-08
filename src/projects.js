@@ -90,7 +90,7 @@ const ProjectFilter = (props) => (
 export const ProjectList = props => (
     <List aside={<Aside />}  {...props} filters={<ProjectFilter/>} bulkActionButtons={<PostBulkActionButtons />}>
         <Datagrid rowStyle={postRowStyle} >
-            <TextField source="project_name" label="Название проекта" sortable={false}/>
+            <TextField source="project_name" label="Название проекта"/>
             <TextField source="client" label="Клиент" sortable={false} />
             <NumberField source="budget" label="Бюджет" sortable={false}/>
             <SelectField source="nda" choices={ndaFields} label="NDA" sortable={false}/>
@@ -116,7 +116,7 @@ export const ProjectEdit = props => (
             <TextInput source="problems_and_solvings" label="Проблемы и их решения"/>
             <ArrayInput source="technologies" label="Технологии">
                 <SimpleFormIterator>
-                    <TextInput source="" label="Технология" />
+                    <TextInput source="technology" label="Технология" />
                 </SimpleFormIterator>
             </ArrayInput>
             <ArrayInput source="links_to_store_site" label="Ссылка на стор-сайт">
@@ -134,9 +134,9 @@ export const ProjectEdit = props => (
             <ArrayInput source="teams" label="Команды">
                 <SimpleFormIterator >
                     <TextInput source="team_work_direction" label="Команда" />
-                    <ArrayInput source="team" label="">
+                    <ArrayInput source="workers" label="">
                         <SimpleFormIterator >
-                            <TextInput source="workers" label="Сотрудник" />
+                            <TextInput source="worker" label="Сотрудник" />
                         </SimpleFormIterator>
                     </ArrayInput>
                 </SimpleFormIterator>
@@ -180,7 +180,7 @@ export const ProjectCreate = (props) => {
                 <TextInput source="problems_and_solvings" label="Проблемы и их решения" resettable/>
                 <ArrayInput source="technologies" label="Технологии" >
                     <SimpleFormIterator>
-                        <TextInput source="" label="Технология" resettable/>
+                        <TextInput source="technology" label="Технология" resettable/>
                     </SimpleFormIterator>
                 </ArrayInput>
                 <ArrayInput source="links_to_store_site" label="Ссылка на стор-сайт">
@@ -198,9 +198,9 @@ export const ProjectCreate = (props) => {
                 <ArrayInput source="teams" label="Команды" >
                     <SimpleFormIterator>
                         <TextInput source="team_work_direction" label="Команда" resettable/>
-                        <ArrayInput source="team" label="">
+                        <ArrayInput source="workers" label="">
                             <SimpleFormIterator>
-                                <TextInput source="workers" label="Сотрудник" resettable/>
+                                <TextInput source="worker" label="Сотрудник" resettable/>
                             </SimpleFormIterator>
                         </ArrayInput>
                     </SimpleFormIterator>
@@ -243,7 +243,7 @@ export const ProjectShow = props => (
             <TextField source="problems_and_solvings" label="Проблемы/сложности"/>
             <ArrayField source="technologies" label="Технологии">
                 <SingleFieldList>
-                    <TextField source=""/>
+                    <TextField source="technology"/>
                 </SingleFieldList>
             </ArrayField>
             <ArrayField source="links_to_store_site" label="Cсылка на стор">
@@ -261,9 +261,9 @@ export const ProjectShow = props => (
             <ArrayField source="teams" label="Команды">
                 <Datagrid>
                     <TextField source="team_work_direction" label="Направление"/>
-                    <ArrayField source="team" label="Команда">
+                    <ArrayField source="workers" label="Команда">
                         <SingleFieldList>
-                            <TextField source="workers"/>
+                            <TextField source="worker"/>
                         </SingleFieldList>
                     </ArrayField>
                 </Datagrid>

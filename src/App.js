@@ -8,7 +8,8 @@ import {authProvider, httpClient} from './embeddedModules/authProvider';
 import NotFound from './embeddedModules/NotFound';
 import {NewsList, NewsCreate, NewsEdit, NewsShow} from "./telegram";
 
-import jsonServerProvider from 'ra-data-json-server';
+import jsonServerProvider from './embeddedModules/dataProvider';
+import simpleRestProvider from 'ra-data-json-server';
 
 import PostIcon from '@material-ui/icons/Book';
 import BriefIcon from '@material-ui/icons/ChromeReaderMode';
@@ -20,7 +21,7 @@ const App = () => (
     <Admin catchAll={NotFound}
            dashboard={Dashboard}
            authProvider={authProvider}
-           dataProvider={jsonServerProvider('http://127.0.0.1:3001', httpClient)}>
+           dataProvider={jsonServerProvider}>
 
         <Resource name="projects" list={ProjectList} edit={ProjectEdit} create={ProjectCreate} show={ProjectShow} icon={PostIcon} />
         <Resource name="briefs" list={BriefList} icon={BriefIcon} />
