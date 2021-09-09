@@ -32,7 +32,6 @@ import UrlFieldCustom from './embeddedModules/UrlFieldCustom';
 import ResetViewsButton from './embeddedModules/ResetViewsButton';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, Chip } from '@material-ui/core';
-import classnames from 'classnames';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
