@@ -17,7 +17,9 @@
     "react-admin": "latest",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "ra-ui-materialui": "latest",
+    "classnames": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

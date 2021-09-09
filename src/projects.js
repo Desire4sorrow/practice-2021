@@ -32,6 +32,7 @@ import UrlFieldCustom from './embeddedModules/UrlFieldCustom';
 import ResetViewsButton from './embeddedModules/ResetViewsButton';
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, Chip } from '@material-ui/core';
+import classnames from 'classnames';
 
 const otraslFields = [
     {id: '0', name: 'Разработка web-приложений'},
@@ -82,6 +83,7 @@ const postRowStyle = (record, index) => ({
     textDecorationColor: '#000000',
 });
 
+
 const useQuickFilterStyles = makeStyles(theme => ({
     chip: {
         marginBottom: theme.spacing(1),
@@ -96,32 +98,46 @@ const QuickFilter = ({ label }) => {
 
 const ProjectPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
+const useStyles = makeStyles({
+    table: {
+        backgroundColor: 'Lavender',
+    },
+    headerCell: {
+        backgroundColor: '#2196f34a',
+    },
+});
+
 const ProjectFilter = (props) => (
     <Filter {...props}>
-        <SearchInput placeholder='Search' source='project_name' source='client' resettable alwaysOn />
-        <TextInput source='client' label='Клиент'/>
+        <SearchInput placeholder='Search' source='project_name' resettable alwaysOn />
+        <TextInput source='client' label='Клиент' resettable/>
         <QuickFilter source='nda' label='NDA' defaultValue={true}/>
     </Filter>
 );
 
-export const ProjectList = props => (
-    <List aside={<Aside />}  {...props} filters={<ProjectFilter/>} pagination={<ProjectPagination />} bulkActionButtons={<PostBulkActionButtons />}>
-        <Datagrid rowStyle={postRowStyle} >
-            <TextField source="project_name" label="Название проекта"/>
-            <TextField source="client" label="Клиент"  />
-            <NumberField source="budget" label="Бюджет" />
-            <SelectField source="nda" choices={ndaFields} label="NDA" />
-            <UrlFieldCustom source="link_to_project_folder" label="Ссылка" />
-            <SelectField source="otrasl" choices={otraslFields} label="Отрасль" />
-            <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта" />
-            <ShowButton />
-            <EditButton />
-        </Datagrid>
-    </List>
-);
+export const ProjectList = props => {
+    const classes = useStyles();
+    return (
+        <List aside={<Aside/>}  {...props} filters={<ProjectFilter/>} pagination={<ProjectPagination/>}
+              bulkActionButtons={<PostBulkActionButtons/>}>
+            <Datagrid classes={classes} rowStyle={postRowStyle} {...props}>
+                <TextField source="project_name" label="Название проекта"/>
+                <TextField source="client" label="Клиент"/>
+                <NumberField source="budget" label="Бюджет"/>
+                <SelectField source="nda" choices={ndaFields} label="NDA"/>
+                <UrlFieldCustom source="link_to_project_folder" label="Ссылка"/>
+                <SelectField source="otrasl" choices={otraslFields} label="Отрасль"/>
+                <SelectField source="state_of_project" choices={stateOfProjectFields} label="Статус проекта"/>
+                <ShowButton/>
+                <EditButton/>
+            </Datagrid>
+        </List>
+    )
+};
 
 export const ProjectEdit = props => (
-    <Edit title={<ProjectTitle/>} {...props}>
+
+    <Edit successMessage="Изменения успешно сохранены" title={<ProjectTitle/>} {...props}>
         <SimpleForm>
             <TextInput source="project_name" label="Название проекта" />
             <SelectInput source="otrasl" choices={otraslFields} label="Отрасль"/>
@@ -185,7 +201,7 @@ export const ProjectEdit = props => (
 export const ProjectCreate = (props) => {
 
     return (
-        <Create {...props}>
+        <Create successMessage="Элемент успешно создан" {...props}>
             <SimpleForm>
                 <TextInput source="project_name" label="Название проекта" resettable/>
                 <SelectInput source="otrasl" label="Отрасль" choices={otraslFields} />
