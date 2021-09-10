@@ -13,7 +13,7 @@ export default {
             order: order,
             page: JSON.stringify(page),
             perPage: JSON.stringify(perPage),
-            filter: JSON.stringify(params.filter),
+            filter: "",
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
 
