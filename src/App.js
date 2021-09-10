@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Admin, Resource } from 'react-admin';
+import { Admin, Resource, Logout } from 'react-admin';
 
 import { ProjectList, ProjectEdit, ProjectCreate, ProjectShow } from './projects';
 import {BriefList} from "./briefs";
@@ -9,15 +9,21 @@ import NotFound from './embeddedModules/NotFound';
 import {NewsList, NewsCreate, NewsEdit, NewsShow} from "./telegram";
 
 import jsonServerProvider from './embeddedModules/dataProvider';
+import MyLogin from './embeddedModules/LoginPage';
 
 import PostIcon from '@material-ui/icons/Book';
 import BriefIcon from '@material-ui/icons/ChromeReaderMode';
 import NewsIcon from '@material-ui/icons/Announcement';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+const MyLogoutButton = props => <Logout {...props} icon={<ExitToAppIcon/>} />;
 
 
 
 const App = () => (
-    <Admin catchAll={NotFound}
+    <Admin loginPage={MyLogin}
+           logoutButton={MyLogoutButton}
+           catchAll={NotFound}
            dashboard={Dashboard}
            authProvider={authProvider}
            dataProvider={jsonServerProvider}>
@@ -29,4 +35,3 @@ const App = () => (
 );
 
 export default App;
-

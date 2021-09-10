@@ -13,7 +13,7 @@ export default {
             order: order,
             page: JSON.stringify(page),
             perPage: JSON.stringify(perPage),
-            filter: "",
+            filter: JSON.stringify(params.filter),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
 
@@ -32,7 +32,7 @@ export default {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
         };
-        
+
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },

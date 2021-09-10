@@ -1,7 +1,4 @@
 import * as React from "react";
-import axios from 'axios';
-
-
 import {     List,
     TextField,
     EditButton,
@@ -19,7 +16,6 @@ import { Card, CardActions, CardHeader } from '@material-ui/core';
 import ChromeReaderModeRoundedIcon from '@material-ui/icons/ChromeReaderModeRounded';
 import {makeStyles} from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles({
     actions: {
         backgroundColor: '#ccc',
@@ -33,15 +29,19 @@ export const NewsList = props => {
             <NewsGrid/>
         </List>
     );
-};
+}
 
+function SendToBot()
+{
+    alert('Sending this new to Telegram');
+}
 const cardStyle = {
     width: 380,
     minHeight: 200,
     margin: '0.5em',
     display: 'inline-block',
     verticalAlign: 'top',
-    backgroundColor: '#F0F8FF',
+    backgroundColor: 'lightblue',
 };
 const NewsGrid = () => {
     const { ids, data, basePath } = useListContext();
@@ -83,7 +83,7 @@ export const NewsCreate = (props) => {
             </SimpleForm>
         </Create>
     );
-};
+}
 
 export const NewsShow = props => (
     <Show label='Текущий проект' {...props}>
